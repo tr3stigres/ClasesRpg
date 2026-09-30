@@ -12,16 +12,28 @@ namespace ClasesRpg
 public class CombateGuerreroMago : Combate
 {
 
-    public CombateGuerreroMago(Combatiente guerrero, Combatiente mago) : base(guerrero, mago)
+    public CombateGuerreroMago(Guerrero c1, Mago c2) : base(c1, c2)
     {
-        guerrero.Atacar(mago);
         VerEstados();
-        mago.Atacar(guerrero);
-        VerEstados();
-        mago.Atacar(guerrero);
-        VerEstados();
-        mago.Atacar(guerrero);
-        VerEstados();
+        if (c1.Atacar(c2))
+        {
+            VerEstados();
+            if (c2.Atacar(c1))
+            {
+                VerEstados();
+                if (c2.Atacar(c1))
+                {
+                    VerEstados();
+                    if (c2.Atacar(c1))
+                        VerEstados();
+                }                    
+            }
+        }
+        else 
+        {
+            VerEstados();
+        }
+        
     }
 
     public override void VerEstados()

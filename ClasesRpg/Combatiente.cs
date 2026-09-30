@@ -10,10 +10,12 @@
     }
 
     public abstract int CalcularAtaque();
-    public void Atacar(Combatiente objetivo)
+    public bool Atacar(Combatiente objetivo)
     {
-        if (Vida > 0)
+        if (Vida > 0 && objetivo.Vida > 0)
             objetivo.Recibir(CalcularAtaque());
+
+        return (Vida > 0 && objetivo.Vida > 0);
     }
 
     private void Recibir(int dolor)
